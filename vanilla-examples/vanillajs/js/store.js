@@ -65,9 +65,8 @@
 	 *
 	 * @param {function} callback The callback to fire upon retrieving data
 	 */
-	Store.prototype.findAll = function (callback) {
-		callback = callback || function () {};
-		callback.call(this, JSON.parse(localStorage[this._dbName]).todos);
+	Store.prototype.findAll = function () {
+		return JSON.parse(localStorage[this._dbName]).todos;
 	};
 
 	/**

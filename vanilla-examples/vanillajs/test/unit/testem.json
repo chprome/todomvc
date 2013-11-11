@@ -1,0 +1,11 @@
+{
+    "framework" : "mocha+chai",
+    "src_files" : [
+        "./test/lib/sinon-chai.js",
+        "./test/lib/sinon.js",
+        "./test/unit/init.js",
+        "./js/store.js",
+        "./js/model.js",
+        "./test/unit/ModelTest.js"
+    ]
+}

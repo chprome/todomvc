@@ -48,9 +48,10 @@
 		var queryType = typeof query;
 		callback = callback || function () {};
 
-		if (queryType === 'function') {
-			callback = query;
-			return this.storage.findAll(callback);
+		debugger
+
+		if (arguments.length === 0) {
+			return this.storage.findAll();
 		} else if (queryType === 'string' || queryType === 'number') {
 			this.storage.find({ id: query }, callback);
 		} else {
@@ -99,16 +100,16 @@
 			total: 0
 		};
 
-		this.storage.findAll(function (data) {
-			data.each(function (todo) {
-				if (todo.completed === 1) {
-					todos.completed++;
-				} else {
-					todos.active++;
-				}
+		var datas = this.storage.findAll();
 
-				todos.total++;
-			});
+		datas.forEach(function (todo) {
+			if (todo.completed === 1) {
+				todos.completed++;
+			} else {
+				todos.active++;
+			}
+
+			todos.total++;
 		});
 
 		return todos;

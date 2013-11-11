@@ -37,9 +37,7 @@
 	 * todo-list
 	 */
 	Controller.prototype.showAll = function () {
-		this.model.read(function (data) {
-			this.$todoList.innerHTML = this.view.show(data);
-		}.bind(this));
+		this.$todoList.innerHTML = this.view.show(this.model.read());
 	};
 
 	/**
