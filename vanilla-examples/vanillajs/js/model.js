@@ -48,8 +48,6 @@
 		var queryType = typeof query;
 		callback = callback || function () {};
 
-		debugger
-
 		if (arguments.length === 0) {
 			return this.storage.findAll();
 		} else if (queryType === 'string' || queryType === 'number') {
