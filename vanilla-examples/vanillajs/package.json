@@ -1,0 +1,9 @@
+{
+  "name": "TodoMVC-vanillajs",
+  "description": "Is awesome",
+  "version": "0.0.1",
+  "devDependencies": {
+    "dalekjs": "0.0.8",
+    "dalek-browser-chrome": "0.0.7"
+  }
+}
