@@ -6,6 +6,6 @@
         "./test/unit/init.js",
         "./js/store.js",
         "./js/model.js",
-        "./test/unit/ModelTest.js"
+        "./test/unit/specs/ModelTest.js"
     ]
 }
