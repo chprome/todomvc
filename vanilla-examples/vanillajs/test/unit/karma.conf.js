@@ -8,13 +8,14 @@ module.exports = function (config) {
             './specs/*.js'
         ],
         frameworks: ['mocha', 'chai', 'sinon'],
-        browsers: ['Chrome'],
+        browsers: ['Chrome', 'Firefox'],
         autoWatch: true,
         plugins: [
             'karma-mocha',
             'karma-chai',
             'karma-sinon',
-            'karma-chrome-launcher'
+            'karma-chrome-launcher',
+            'karma-firefox-launcher'
         ]
     });
 };
