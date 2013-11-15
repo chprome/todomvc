@@ -14,8 +14,6 @@
 		var data;
 		var dbName;
 
-		callback = callback || function () {};
-
 		dbName = this._dbName = name;
 
 		if (!localStorage[dbName]) {
@@ -25,8 +23,6 @@
 
 			localStorage[dbName] = JSON.stringify(data);
 		}
-
-		callback.call(this, JSON.parse(localStorage[dbName]));
 	}
 
 	/**
@@ -42,14 +38,10 @@
 	 *	 // hello: world in their properties
 	 * });
 	 */
-	Store.prototype.find = function (query, callback) {
-		if (!callback) {
-			return;
-		}
-
+	Store.prototype.find = function (query) {
 		var todos = JSON.parse(localStorage[this._dbName]).todos;
 
-		callback.call(this, todos.filter(function (todo) {
+		return todos.filter(function (todo) {
 			var match = true;
 			for (var q in query) {
 				if (query[q] !== todo[q]) {
@@ -57,7 +49,7 @@
 				}
 			}
 			return match;
-		}));
+		});
 	};
 
 	/**

@@ -27,6 +27,7 @@
 		};
 
 		this.storage.save(newItem, callback);
+        return newItem;
 	};
 
 	/**
@@ -44,17 +45,19 @@
 	 * //Below will find a model with foo equalling bar and hello equalling world.
 	 * model.read({ foo: 'bar', hello: 'world' });
 	 */
-	Model.prototype.read = function (query, callback) {
+	Model.prototype.read = function (query) {
 		var queryType = typeof query;
-		callback = callback || function () {};
+        var data;
 
 		if (arguments.length === 0) {
-			return this.storage.findAll();
+			 data = this.storage.findAll();
 		} else if (queryType === 'string' || queryType === 'number') {
-			this.storage.find({ id: query }, callback);
+			data = this.storage.find({ id: query });
 		} else {
-			this.storage.find(query, callback);
+			data = this.storage.find(query);
 		}
+
+        return data;
 	};
 
 	/**

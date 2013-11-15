@@ -44,18 +44,16 @@
 	 * Renders all active tasks
 	 */
 	Controller.prototype.showActive = function () {
-		this.model.read({ completed: 0 }, function (data) {
-			this.$todoList.innerHTML = this.view.show(data);
-		}.bind(this));
+		var data = this.model.read({ completed: 0 });
+        this.$todoList.innerHTML = this.view.show(data);
 	};
 
 	/**
 	 * Renders all completed tasks
 	 */
 	Controller.prototype.showCompleted = function () {
-		this.model.read({ completed: 1 }, function (data) {
-			this.$todoList.innerHTML = this.view.show(data);
-		}.bind(this));
+		var data = this.model.read({ completed: 1 });
+        this.$todoList.innerHTML = this.view.show(data);
 	};
 
 	/**
@@ -73,10 +71,9 @@
 				return;
 			}
 
-			this.model.create(e.target.value, function () {
-				input.value = '';
-				this._filter(true);
-			}.bind(this));
+			this.model.create(e.target.value);
+            input.value = '';
+            this._filter(true);
 		}
 
 	};
@@ -175,11 +172,10 @@
 	 * Will remove all completed items from the DOM and storage.
 	 */
 	Controller.prototype.removeCompletedItems = function () {
-		this.model.read({ completed: 1 }, function (data) {
-			data.forEach(function (item) {
-				this.removeItem(item.id);
-			}.bind(this));
-		}.bind(this));
+		var completed = this.model.read({ completed: 1 });
+        completed.forEach(function (item) {
+            this.removeItem(item.id);
+        }.bind(this));
 
 		this._filter();
 	};
