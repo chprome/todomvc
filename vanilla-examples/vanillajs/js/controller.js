@@ -114,11 +114,11 @@
 			li.removeChild(input);
 
 			// Remove the editing class
-			li.className = li.className.replace('editing', '');
+			li.classList.remove('editing');
 		}.bind(this);
 
 		// Append the editing class
-		li.className = li.className + ' editing';
+		li.classList.add('editing');
 
 		var input = document.createElement('input');
 		input.className = 'edit';
